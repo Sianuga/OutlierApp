@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage>
             const Padding(
               padding:  EdgeInsets.all(10.0),
               child: Text(
-                'Enter comma-seperated numbers:',
+                'Wprowadz liczby oddzielone przecinkami:',
               ),
             ),
          
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage>
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                hintText: 'Enter numbers',
+                hintText: 'Wprowadz liczby',
                 
                 ),
                 ),
