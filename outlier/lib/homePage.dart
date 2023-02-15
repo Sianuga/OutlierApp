@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'outlierPage.dart';
 
 class MyHomePage extends StatefulWidget 
 {
@@ -17,22 +18,47 @@ class MyHomePage extends StatefulWidget
 class _MyHomePageState extends State<MyHomePage> 
 {
 
+  var textController = TextEditingController();
+
+  @override
+  void dispose()
+  {
+    textController.dispose();
+    super.dispose();
+  }
 
 
   @override
   Widget build(BuildContext context) 
   {
-    void printConsole()
+
+
+   List<int> splitAndParseToInt(String numbers)
     {
-        print("Clicked");
+      if(numbers.isNotEmpty)
+      {
+      return numbers.split(',').map((number) => int.parse(number)).toList();
+      }
+      else
+      {
+      return List.empty();
+      }
+ 
+     
     }
+
+
 
     void changeToOutlierScreen()
     {
-      //Implement changing to outlierScreen
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+     return OutlierPage(title: 'OutlierPage', numbers: splitAndParseToInt(textController.text));
+   }));
     }
+
  
-    
+
+
 
 
     return Scaffold(
@@ -57,21 +83,23 @@ class _MyHomePageState extends State<MyHomePage>
             ),
          
             //Select appropriate size for textField
-           const Padding(
-              padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 60, right: 60),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 60, right: 60),
               child: TextField(
-                decoration: InputDecoration(
+                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 hintText: 'Wprowadz liczby',
-                
+              
                 ),
+                controller: textController,
+                
                 ),
             ),
 
            Padding(
               padding: const EdgeInsets.all( 10.0),
               child: TextButton(
-                onPressed: printConsole,
+                onPressed: changeToOutlierScreen,
 
                 style: ButtonStyle(
                   minimumSize: MaterialStateProperty.all<Size>(
