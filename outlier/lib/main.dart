@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'homePageScreen.dart';
-import 'outlierScreen.dart';
+import 'homePage.dart';
+import 'outlierPage.dart';
 
 void main() 
 {
