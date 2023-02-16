@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:outlier/outlierFinder.dart';
 
 class OutlierPage extends StatefulWidget
 {
@@ -14,34 +15,32 @@ class OutlierPage extends StatefulWidget
   State<OutlierPage> createState() => _OutlierPage();
 }
 
-class _OutlierPage extends State<OutlierPage>
+class _OutlierPage extends State<OutlierPage> implements OutlierFinder
 {
 
-  @override
-  Widget build(BuildContext context) 
-  {
-
-    List<int> getAllEven(List<int> numbers)
+@override
+List<int> getAllEven(List<int> numbers)
     {
       return numbers.where((number) => number%2==0).toList();
     }
 
+    @override
     List<int> getAllUneven(List<int> numbers)
     {
       return numbers.where((number) => number%2==1).toList();
     }
 
-
+    @override
     int returnOutlier(List<int> numbers)
     {
       var evenNumbers = getAllEven(numbers);
       var unevenNumbers = getAllUneven(numbers);
 
-      if(evenNumbers.length==1 && unevenNumbers.isNotEmpty)
+      if(evenNumbers.length==1 )
       {
         return evenNumbers[0];
       }
-      else
+      else if (unevenNumbers.isNotEmpty)
       {
         return unevenNumbers[0];
       }
@@ -49,6 +48,13 @@ class _OutlierPage extends State<OutlierPage>
       return -1;
       
     }
+
+
+  @override
+  Widget build(BuildContext context) 
+  {
+
+    
 
     return Scaffold(
       appBar: AppBar(

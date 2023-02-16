@@ -11,7 +11,7 @@ class MyHomePage extends StatefulWidget
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-  //Implement interface for button action
+
 
 class _MyHomePageState extends State<MyHomePage> 
 {
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             ),
          
-            //Select appropriate size for textField
+
             Padding(
               padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 60, right: 60),
               child: TextField(
