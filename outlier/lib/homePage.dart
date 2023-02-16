@@ -5,8 +5,6 @@ class MyHomePage extends StatefulWidget
 {
   const MyHomePage({super.key, required this.title});
 
-
-
   final String title;
 
   @override
@@ -47,19 +45,19 @@ class _MyHomePageState extends State<MyHomePage>
      
     }
 
+    void clearTextField()
+    {
+      textController.clear();
+    }
 
 
     void changeToOutlierScreen()
     {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) 
+      {
      return OutlierPage(title: 'OutlierPage', numbers: splitAndParseToInt(textController.text));
    }));
     }
-
- 
-
-
-
 
     return Scaffold(
 
@@ -95,9 +93,14 @@ class _MyHomePageState extends State<MyHomePage>
                 
                 ),
             ),
-
-           Padding(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+              Padding(
               padding: const EdgeInsets.all( 10.0),
+              child: SizedBox(
+                  width: 200,
+                height: 50,
               child: TextButton(
                 onPressed: changeToOutlierScreen,
 
@@ -111,7 +114,38 @@ class _MyHomePageState extends State<MyHomePage>
                   'Wyszukaj',
                 )
                 ),
-            )
+              ),
+            ),
+
+               Padding(
+              padding: const EdgeInsets.all( 10.0),
+              child: SizedBox(
+                  width: 200,
+                height: 50,
+              child: TextButton(
+                onPressed: clearTextField,
+
+                style: ButtonStyle(
+                  minimumSize: MaterialStateProperty.all<Size>(
+                    const Size(150,50), 
+                  )
+                ),
+
+                child: const Text(
+                  'Wyczysc',
+                )
+                ),
+              ),
+            ),
+
+
+
+
+            ]
+            
+            
+            ),
+          
 
           ],
           

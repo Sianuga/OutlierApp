@@ -17,11 +17,6 @@ class OutlierPage extends StatefulWidget
 class _OutlierPage extends State<OutlierPage>
 {
 
-
-  
-
-
-
   @override
   Widget build(BuildContext context) 
   {
@@ -42,7 +37,7 @@ class _OutlierPage extends State<OutlierPage>
       var evenNumbers = getAllEven(numbers);
       var unevenNumbers = getAllUneven(numbers);
 
-      if(evenNumbers.length==1)
+      if(evenNumbers.length==1 && unevenNumbers.isNotEmpty)
       {
         return evenNumbers[0];
       }
@@ -50,6 +45,9 @@ class _OutlierPage extends State<OutlierPage>
       {
         return unevenNumbers[0];
       }
+
+      return -1;
+      
     }
 
     return Scaffold(
